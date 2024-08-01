@@ -1,6 +1,6 @@
 html {
   font-size: 10px;
-  background: url('./Net\ of\ being.jpg') bottom center;
+  background: url('./Net\ of\ being.jpg');
   background-size: cover;
 }
 
@@ -13,7 +13,7 @@ body,html {
 .keys {
   display: flex;
   flex: 1;
-  min-height: 100vh;
+  min-height: 50vh;
   align-items: center;
   justify-content: center;
 }
@@ -48,4 +48,16 @@ kbd {
   text-transform: uppercase;
   letter-spacing: .1rem;
   color: #ffc600;
+}
+
+.container{
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  margin-top: 100px;
+}
+.skauron-text {
+  color: white;
+  width: 200px;
 }
