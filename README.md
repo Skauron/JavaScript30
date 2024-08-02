@@ -4,3 +4,5 @@
 
 #Day  1 - Drum Kit
 https://drumkitskauron.netlify.app/
+#Day  2 - JS & CSS Clock
+https://jscssclockskauron.netlify.app/
