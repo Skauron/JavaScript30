@@ -7,3 +7,6 @@ https://drumkitskauron.netlify.app/
 
 #Day  2 - JS & CSS Clock
 https://jscssclockskauron.netlify.app/
+
+#Day  3 - CSS Variables
+https://cssvariablesskauron.netlify.app/
