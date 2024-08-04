@@ -10,3 +10,6 @@ https://jscssclockskauron.netlify.app/
 
 #Day  3 - CSS Variables
 https://cssvariablesskauron.netlify.app/
+
+#Day  4 - Array Cardio Part 1
+https://arraycardioskauron.netlify.app/
