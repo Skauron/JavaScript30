@@ -13,3 +13,6 @@ https://cssvariablesskauron.netlify.app/
 
 #Day  4 - Array Cardio Part 1
 https://arraycardioskauron.netlify.app/
+
+#Day  5 - Flex Panels
+https://flexpanelsskauron.netlify.app/
