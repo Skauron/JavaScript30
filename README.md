@@ -16,3 +16,6 @@ https://arraycardioskauron.netlify.app/
 
 #Day  5 - Flex Panels
 https://flexpanelsskauron.netlify.app/
+
+#Day  6 - Ajax Type Ahead
+https://ajaxskauron.netlify.app/
