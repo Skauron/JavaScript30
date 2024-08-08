@@ -22,3 +22,6 @@ https://ajaxskauron.netlify.app/
 
 #Day  7 - Array Cardio Part 2
 https://arraycadio2skauron.netlify.app/
+
+#Day  8 - Fun with HTML5 Canvas
+https://canvasskauron.netlify.app/
