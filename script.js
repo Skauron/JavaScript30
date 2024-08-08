@@ -21,15 +21,23 @@ function draw(e) {
   ctx.moveTo(LastX, LastY);
 
   //* PC O MOBILE
-  if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+  if (
+    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      navigator.userAgent
+    )
+  ) {
     ctx.lineTo(e.touches[0].clientX, e.touches[0].clientY);
   } else {
     ctx.lineTo(e.offsetX, e.offsetY);
   }
-  
+
   ctx.stroke();
   //* PC O MOBILE
-  if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+  if (
+    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      navigator.userAgent
+    )
+  ) {
     [LastX, LastY] = [e.touches[0].clientX, e.touches[0].clientY];
   } else {
     [LastX, LastY] = [e.offsetX, e.offsetY];
@@ -50,19 +58,25 @@ function draw(e) {
 }
 
 //* PC
-canvas.addEventListener("mousedown", (e) => {
-  isDrawing = true;
-  [LastX, LastY] = [e.offsetX, e.offsetY];
-});
-canvas.addEventListener("mousemove", draw);
-canvas.addEventListener("mouseup", () => (isDrawing = false));
-canvas.addEventListener("mouseout", () => (isDrawing = false));
-
-//*MOBILE
-canvas.addEventListener("touchstart", (e) => {
-  isDrawing = true;
-  [LastX, LastY] = [e.touches[0].clientX, e.touches[0].clientY];
-});
-canvas.addEventListener("touchmove", draw);
-canvas.addEventListener("touchcancel", () => (isDrawing = false));
-canvas.addEventListener("touchend", () => (isDrawing = false));
+if (
+  /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+    navigator.userAgent
+  )
+) {
+  //*MOBILE
+  canvas.addEventListener("touchstart", (e) => {
+    isDrawing = true;
+    [LastX, LastY] = [e.touches[0].clientX, e.touches[0].clientY];
+  });
+  canvas.addEventListener("touchmove", draw);
+  canvas.addEventListener("touchcancel", () => (isDrawing = false));
+  canvas.addEventListener("touchend", () => (isDrawing = false));
+} else {
+  canvas.addEventListener("mousedown", (e) => {
+    isDrawing = true;
+    [LastX, LastY] = [e.offsetX, e.offsetY];
+  });
+  canvas.addEventListener("mousemove", draw);
+  canvas.addEventListener("mouseup", () => (isDrawing = false));
+  canvas.addEventListener("mouseout", () => (isDrawing = false));
+}
