@@ -25,3 +25,6 @@ https://arraycadio2skauron.netlify.app/
 
 #Day  8 - Fun with HTML5 Canvas
 https://canvasskauron.netlify.app/
+
+#Day  9 - Dev Tools Domination
+https://devtoolsskauron.netlify.app/
