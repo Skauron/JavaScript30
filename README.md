@@ -28,3 +28,6 @@ https://canvasskauron.netlify.app/
 
 #Day  9 - Dev Tools Domination
 https://devtoolsskauron.netlify.app/
+
+#Day  10 - Hold Shift and Check Checkboxes
+https://holdshiftskauron.netlify.app/
