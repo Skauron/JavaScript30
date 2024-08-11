@@ -31,3 +31,6 @@ https://devtoolsskauron.netlify.app/
 
 #Day  10 - Hold Shift and Check Checkboxes
 https://holdshiftskauron.netlify.app/
+
+#Day  11 - Custom Video Player
+https://videoplayerskauron.netlify.app/
