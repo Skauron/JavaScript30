@@ -34,3 +34,6 @@ https://holdshiftskauron.netlify.app/
 
 #Day  11 - Custom Video Player
 https://videoplayerskauron.netlify.app/
+
+#Day  12 - Key Sequence Detection
+https://keydetectionskauron.netlify.app/
