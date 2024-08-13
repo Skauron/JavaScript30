@@ -1,10 +1,35 @@
-const pressed = [];
-const secredCode = 'skauron';
+function debounce(func, wait = 20, immediate = true) {
+  var timeout;
+  return function () {
+    var context = this,
+      args = arguments;
+    var later = function () {
+      timeout = null;
+      if (!immediate) func.apply(context, args);
+    };
+    var callNow = immediate && !timeout;
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+    if (callNow) func.apply(context, args);
+  };
+}
 
-window.addEventListener("keyup", (e) =>{
-  pressed.push(e.key);
-  pressed.splice(-secredCode.length - 1, pressed.length - secredCode.length);
-  if(pressed.join('').includes(secredCode)){
-    cornify_add();
-  }
-});
+const sliderImages = document.querySelectorAll(".slide-in");
+
+function checkSlide(e){
+  sliderImages.forEach(sliderImage =>{
+    //* Half way through the image
+    const slideInAt = (window.scrollY + window.innerHeight) - sliderImage.height / 2;
+    //* Bottom of the image
+    const imagenBottom = sliderImage.offsetTop + sliderImage.height;
+    const isHalfShown = slideInAt > sliderImage.offsetTop;
+    const isNotScroolledPast = window.scrollY < imagenBottom;
+    if(isHalfShown && isNotScroolledPast){
+      sliderImage.classList.add("active");
+    }else{
+      sliderImage.classList.remove("active");
+    }
+  });
+}
+
+window.addEventListener("scroll", debounce(checkSlide));
