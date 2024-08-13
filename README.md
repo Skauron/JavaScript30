@@ -37,3 +37,6 @@ https://videoplayerskauron.netlify.app/
 
 #Day  12 - Key Sequence Detection
 https://keydetectionskauron.netlify.app/
+
+#Day  13 - Slide in on Scroll
+https://scrollinskauron.netlify.app/
