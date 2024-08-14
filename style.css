@@ -57,7 +57,7 @@ h1 {
 }
 
 .skauron-text {
-  width: 200px;
+  width: 500px;
 }
 
 .container {
@@ -65,4 +65,5 @@ h1 {
   flex: 1;
   justify-content: center;
   align-items: center;
+  min-height: 100vh;
 }
