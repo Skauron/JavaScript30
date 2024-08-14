@@ -40,3 +40,6 @@ https://keydetectionskauron.netlify.app/
 
 #Day  13 - Slide in on Scroll
 https://scrollinskauron.netlify.app/
+
+#Day  14 - JavaScript References VS Copying
+https://jsrefvscopyingskauron.netlify.app/
