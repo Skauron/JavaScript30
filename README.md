@@ -43,3 +43,6 @@ https://scrollinskauron.netlify.app/
 
 #Day  14 - JavaScript References VS Copying
 https://jsrefvscopyingskauron.netlify.app/
+
+#Day  15 - LocalStorage and Event Delegation
+https://localstorageskauron.netlify.app/
