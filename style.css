@@ -1,13 +1,13 @@
 html {
   box-sizing: border-box;
-  background: #ffc600;
-  font-family: "helvetica neue";
-  font-size: 20px;
-  font-weight: 200;
-}
-
-body {
-  margin: 0;
+  background: url("oh-la-la.jpeg") center no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-family: Futura, "Trebuchet MS", Arial, sans-serif;
 }
 
 *,
@@ -16,48 +16,72 @@ body {
   box-sizing: inherit;
 }
 
-h1 {
-  margin-top: 0;
+svg {
+  fill: white;
+  background: rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  border-radius: 50%;
+  width: 200px;
+  margin-bottom: 50px;
 }
 
-.site-wrap {
-  max-width: 700px;
-  margin: 10px auto;
-  background: white;
-  padding: 40px;
-  text-align: justify;
+.wrapper {
+  padding: 20px;
+  max-width: 350px;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.align-left {
-  float: left;
-  margin-right: 20px;
+h2 {
+  text-align: center;
+  margin: 0;
+  font-weight: 200;
 }
 
-.align-right {
-  float: right;
-  margin-left: 20px;
+.plates {
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  list-style: none;
 }
 
-.slide-in {
-  opacity: 0;
-  transition: all 0.5s;
+.plates li {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 10px 0;
+  font-weight: 100;
+  display: flex;
 }
 
-.align-left.slide-in {
-  transform: translateX(-30%) scale(0.95);
+.plates label {
+  flex: 1;
+  cursor: pointer;
 }
 
-.align-right.slide-in {
-  transform: translateX(30%) scale(0.95);
+.plates input {
+  display: none;
 }
 
-.slide-in.active {
-  opacity: 1;
-  transform: translateX(0%) scale(1);
+.plates input + label:before {
+  content: "⬜️";
+  margin-right: 10px;
+}
+
+.plates input:checked + label:before {
+  content: "🌮";
+}
+
+.add-items {
+  margin-top: 20px;
+}
+
+.add-items input {
+  padding: 10px;
+  outline: 0;
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .skauron-text {
-  width: 500px;
+  width: 200px;
 }
 
 .container {
@@ -65,5 +89,10 @@ h1 {
   flex: 1;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  margin-bottom: 10px;
+}
+.buttons{
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
 }
