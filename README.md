@@ -49,3 +49,6 @@ https://localstorageskauron.netlify.app/
 
 #Day  16 - CSS Text Shadow Mouse Move Effect
 https://textshadowskauron.netlify.app/
+
+#Day  17 - Sorting Band Names without articles
+https://sortwithoutarticlesskauron.netlify.app/
