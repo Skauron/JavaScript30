@@ -52,3 +52,12 @@ https://textshadowskauron.netlify.app/
 
 #Day  17 - Sorting Band Names without articles
 https://sortwithoutarticlesskauron.netlify.app/
+
+#Day  18 - Tally String Times with Reduce
+https://addinguptimesskauron.netlify.app/
+
+#Day  19 - Unreal Webcam Fun
+https://webcamfunskauron.netlify.app/
+
+#Day  20 - 
+
