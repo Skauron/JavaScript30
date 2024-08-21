@@ -59,5 +59,8 @@ https://addinguptimesskauron.netlify.app/
 #Day  19 - Unreal Webcam Fun
 https://webcamfunskauron.netlify.app/
 
-#Day  20 - 
+#Day  20 - Speech Detection
+https://speechdetectionskauron.netlify.app/
 
+#Day  21 - Geolocation
+https://geolocationskauron.netlify.app/
