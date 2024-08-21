@@ -1,27 +1,12 @@
-window.SpeechRecognition =
-  window.SpeechRecognition || window.webkitSpeechRecognition;
+const arrow = document.querySelector(".arrow");
+const speed = document.querySelector(".speed-value");
 
-const recognition = new SpeechRecognition();
-recognition.interimResults = true;
-
-let p = document.createElement("p");
-const words = document.querySelector(".words");
-words.appendChild(p);
-
-recognition.addEventListener("result", e => {
-  const transcript = Array.from(e.results)
-    .map(result => result[0])
-    .map(result => result.transcript)
-    .join("");
-
-    p.textContent = transcript;
-    if(e.results[0].isFinal){
-      p = document.createElement("p");
-      words.appendChild(p);
-    }
-    
-});
-
-recognition.addEventListener("end", recognition.start);
-
-recognition.start();
+navigator.geolocation.watchPosition(
+  (data) => {
+    speed.textContent = data.coords.speed;
+    arrow.style.transform = `rotate(${data.coords.heading}deg)`;
+  },
+  (err) => {
+    alert("Hey, you gotta allow that to happen!!!");
+  }
+);
