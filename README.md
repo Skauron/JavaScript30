@@ -67,3 +67,6 @@ https://geolocationskauron.netlify.app/
 
 #Day  22 - Follow Along Link Highlighter
 https://followalonglinkskauron.netlify.app/
+
+#Day  23 - Speech Synthesis
+https://speechsynthesisskauron.netlify.app/
