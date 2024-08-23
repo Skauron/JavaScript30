@@ -42,8 +42,8 @@ function checkMsg() {
   if (customMsg !== null) {
     options[2].textContent = customMsg;
     msg["text"] = customMsg;
-    speechSynthesis.speak(msg);
   }
+  speechSynthesis.speak(msg);
 }
 
 speechSynthesis.addEventListener("voiceschanged", populateVoices);
