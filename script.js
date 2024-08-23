@@ -1,21 +1,56 @@
-const triggers = document.querySelectorAll("a");
-const highlight = document.createElement("span");
+const msg = new SpeechSynthesisUtterance();
+let voices = [];
+const voicesDropdown = document.querySelector('[name="voice"]');
+const options = document.querySelectorAll('[type="range"], [name="text"]');
+const speakButton = document.querySelector("#speak");
+const stopButton = document.querySelector("#stop");
 
-highlight.classList.add("highlight");
-document.body.append(highlight);
+const myKeysValues = window.location.search;
+const urlParams = new URLSearchParams(myKeysValues);
+const customMsg = urlParams.get("msg");
 
-function highlightLink() {
-  const linkCoords = this.getBoundingClientRect();
-  const coords = {
-    width: linkCoords.width,
-    height: linkCoords.height,
-    top: linkCoords.top + window.scrollY,
-    left: linkCoords.left + window.scrollX,
-  }
+msg.text = document.querySelector('[name="text"]').value;
 
-  highlight.style.width = `${coords.width}px`;
-  highlight.style.height = `${coords.height}px`;
-  highlight.style.transform = `translate(${coords.left}px, ${coords.top}px)`;
+
+function populateVoices() {
+  voices = this.getVoices();
+  voicesDropdown.innerHTML = voices
+    .map(
+      (voice) =>
+        `<option value="${voice.name}">${voice.name} (${voice.lang})</option>`
+    )
+    .join("");
 }
 
-triggers.forEach((a) => a.addEventListener("mouseenter", highlightLink));
+function setVoice() {
+  msg.voice = voices.find((voice) => voice.name === this.value);
+  toggle();
+}
+
+function toggle(startOver = true) {
+  speechSynthesis.cancel();
+  if (startOver) 
+    speechSynthesis.speak(msg);
+}
+
+function setOption() {
+  msg[this.name] = this.value;
+  toggle();
+}
+
+function checkMsg() {
+  if (customMsg !== null) {
+    options[2].textContent = customMsg;
+    msg["text"] = customMsg;
+    speechSynthesis.speak(msg);
+  }
+}
+
+speechSynthesis.addEventListener("voiceschanged", populateVoices);
+voicesDropdown.addEventListener("change", setVoice);
+options.forEach((option) => {
+  option.addEventListener("change", setOption);
+});
+speakButton.addEventListener("click", toggle);
+stopButton.addEventListener("click", () => toggle(false));
+checkMsg();
