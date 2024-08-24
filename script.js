@@ -1,56 +1,14 @@
-const msg = new SpeechSynthesisUtterance();
-let voices = [];
-const voicesDropdown = document.querySelector('[name="voice"]');
-const options = document.querySelectorAll('[type="range"], [name="text"]');
-const speakButton = document.querySelector("#speak");
-const stopButton = document.querySelector("#stop");
+const nav = document.querySelector("#main");
+const topOfNav = nav.offsetTop;
 
-const myKeysValues = window.location.search;
-const urlParams = new URLSearchParams(myKeysValues);
-const customMsg = urlParams.get("msg");
-
-msg.text = document.querySelector('[name="text"]').value;
-
-
-function populateVoices() {
-  voices = this.getVoices();
-  voicesDropdown.innerHTML = voices
-    .map(
-      (voice) =>
-        `<option value="${voice.name}">${voice.name} (${voice.lang})</option>`
-    )
-    .join("");
+function  fixNav(){
+    if(window.scrollY >= topOfNav){
+        document.body.style.paddingTop = nav.offsetHeight + "px";
+        document.body.classList.add("fixed-nav");
+    }else{
+        document.body.style.paddingTop = 0;
+        document.body.classList.remove("fixed-nav");
+    }
 }
 
-function setVoice() {
-  msg.voice = voices.find((voice) => voice.name === this.value);
-  toggle();
-}
-
-function toggle(startOver = true) {
-  speechSynthesis.cancel();
-  if (startOver) 
-    speechSynthesis.speak(msg);
-}
-
-function setOption() {
-  msg[this.name] = this.value;
-  toggle();
-}
-
-function checkMsg() {
-  if (customMsg !== null) {
-    options[2].textContent = customMsg;
-    msg["text"] = customMsg;
-  }
-  speechSynthesis.speak(msg);
-}
-
-speechSynthesis.addEventListener("voiceschanged", populateVoices);
-voicesDropdown.addEventListener("change", setVoice);
-options.forEach((option) => {
-  option.addEventListener("change", setOption);
-});
-speakButton.addEventListener("click", toggle);
-stopButton.addEventListener("click", () => toggle(false));
-checkMsg();
+window.addEventListener("scroll", fixNav);
