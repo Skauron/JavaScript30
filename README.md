@@ -70,3 +70,6 @@ https://followalonglinkskauron.netlify.app/
 
 #Day  23 - Speech Synthesis
 https://speechsynthesisskauron.netlify.app/
+
+#Day  24 - Sticky Nav
+https://stickynavskauron.netlify.app/
