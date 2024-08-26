@@ -73,3 +73,9 @@ https://speechsynthesisskauron.netlify.app/
 
 #Day  24 - Sticky Nav
 https://stickynavskauron.netlify.app/
+
+#Day  25 - Event Capture, Propagation, Bubbling and Once
+https://eventcapturapropagationskauron.netlify.app/
+
+#Day  26 - Stripe Follow Along Nav
+https://striperfollowalongnavskauron.netlify.app/
