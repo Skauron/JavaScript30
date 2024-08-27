@@ -1,40 +1,26 @@
-const triggers = document.querySelectorAll(".cool > li");
-const background = document.querySelector(".dropdownBackground");
-const nav = document.querySelector(".top");
+const slider = document.querySelector(".items");
+let isDown = false;
+let startX;
+let scrollLeft;
 
-function handleEnter() {
-  this.classList.add("trigger-enter");
-  setTimeout(() => {
-    if(this.classList.contains("trigger-enter")){
-        this.classList.add("trigger-enter-active")
-    }
-  }, 150);
-  background.classList.add("open");
-
-  const dropdown = this.querySelector(".dropdown");
-  const dropdownCoords = dropdown.getBoundingClientRect();
-  const navCoords = nav.getBoundingClientRect();
-
-  const coords = {
-    height: dropdownCoords.height,
-    width : dropdownCoords.width,
-    top: dropdownCoords.top - navCoords.top,
-    left: dropdownCoords.left - navCoords.left
-  };
-
-  background.style.setProperty("width", `${coords.width}px`);
-  background.style.setProperty("height", `${coords.height}px`);
-  background.style.setProperty("transform", `translate(${coords.left}px, ${coords.top}px)`);
-}
-
-function handleLeave() {
-    this.classList.remove("trigger-enter", "trigger-enter-active");
-    background.classList.remove("open");
-}
-
-triggers.forEach((trigger) =>
-  trigger.addEventListener("mouseenter", handleEnter)
-);
-triggers.forEach((trigger) =>
-  trigger.addEventListener("mouseleave", handleLeave)
-);
+slider.addEventListener("mousedown", (e) => {
+  isDown = true;
+  slider.classList.add("active");
+  startX = e.pageX - slider.offsetLeft;
+  scrollLeft = slider.scrollLeft;
+});
+slider.addEventListener("mouseleave", () => {
+  isDown = false;
+  slider.classList.remove("active");
+});
+slider.addEventListener("mouseup", () => {
+  isDown = false;
+  slider.classList.remove("active");
+});
+slider.addEventListener("mousemove", (e) => {
+  if(!isDown) return;
+  e.preventDefault();
+  const x = e.pageX - slider.offsetLeft;
+  const walk = x - startX;
+  slider.scrollLeft = scrollLeft - walk; 
+});
