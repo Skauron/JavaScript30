@@ -79,3 +79,6 @@ https://eventcapturapropagationskauron.netlify.app/
 
 #Day  26 - Stripe Follow Along Nav
 https://striperfollowalongnavskauron.netlify.app/
+
+#Day  27 - Click and Drag
+https://clickanddragskauron.netlify.app/
