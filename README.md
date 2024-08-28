@@ -82,3 +82,6 @@ https://striperfollowalongnavskauron.netlify.app/
 
 #Day  27 - Click and Drag
 https://clickanddragskauron.netlify.app/
+
+#Day  28 - Video Speed Controller
+https://videospeedcontrollerskauron.netlify.app/
