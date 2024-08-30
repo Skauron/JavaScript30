@@ -85,3 +85,9 @@ https://clickanddragskauron.netlify.app/
 
 #Day  28 - Video Speed Controller
 https://videospeedcontrollerskauron.netlify.app/
+
+#Day  29 - Countdown Timer
+https://countdowntimerskauron.netlify.app/
+
+#Day  30 - Whack A Mole
+https://whackamoleskauron.netlify.app/
