@@ -1,55 +1,54 @@
-let countdown;
-const timerDisplay = document.querySelector(".display__time-left");
-const endTime = document.querySelector(".display__end-time");
-const buttons = document.querySelectorAll("[data-time]");
+const holes = document.querySelectorAll(".hole");
+const scoreBoard = document.querySelector(".score");
+const moles = document.querySelectorAll(".mole");
+let lastHole;
+let lastMole;
+let timeUp;
+let score = 0;
 
-function timer(seconds) {
-  clearInterval(countdown);
-
-  const now = Date.now();
-  const then = now + seconds * 1000;
-  displayTimeLeft(seconds);
-  displayEndTime(then);
-
-  countdown = setInterval(() => {
-    const secondsLeft = Math.round((then - Date.now()) / 1000);
-    if (secondsLeft < 0) {
-      clearInterval(countdown);
-      return;
-    }
-    displayTimeLeft(secondsLeft);
-  }, 1000);
+function randomTime(min, max) {
+  return Math.round(Math.random() * (max - min) + min);
 }
 
-function displayTimeLeft(seconds) {
-  const minutes = Math.floor(seconds / 60);
-  const remindersSecond = seconds % 60;
-  const display = `${minutes}:${
-    remindersSecond < 10 ? "0" : ""
-  }${remindersSecond}`;
-  document.title = display;
-  timerDisplay.textContent = display;
+function randomHole(holes) {
+  const idx = Math.floor(Math.random() * holes.length);
+  const hole = holes[idx];
+  if (hole === lastHole) {
+    return randomHole(holes);
+  }
+  lastHole = hole;
+  return hole;
 }
 
-function displayEndTime(timestamp) {
-  const end = new Date(timestamp);
-  const hour = end.getHours();
-  const adjustedHour = hour > 12 ? hour - 12 : hour;
-  const minutes = end.getMinutes();
-  endTime.textContent = `Be Back At ${adjustedHour}:${
-    minutes < 10 ? "0" : ""
-  }${minutes}`;
+function peep() {
+  const time = randomTime(200, 1000);
+  const hole = randomHole(holes);
+  hole.classList.add("up");
+  setTimeout(() => {
+    hole.classList.remove("up");
+    if (!timeUp) peep();
+  }, time);
 }
 
-function startTime() {
-  const seconds = parseInt(this.dataset.time);
-  timer(seconds);
+function startGame() {
+  scoreBoard.textContent = 0;
+  timeUp = false;
+  score = 0;
+  peep();
+  setTimeout(() => {
+    timeUp = true;
+  }, 10000);
 }
 
-buttons.forEach((button) => button.addEventListener("click", startTime));
-document.customForm.addEventListener("submit", function(e){
-  e.preventDefault();
-  const mins = this.minutes.value;
-  timer(mins * 60);
-  this.reset();  
-});
+function bonk(e) {
+  if (!e.isTrusted) return; //Cheater!!
+  if (e.target === lastMole) {
+    return;
+  }
+  lastMole = e.target;
+  score++;
+  this.classList.remove("up");
+  scoreBoard.textContent = score;
+}
+
+moles.forEach((mole) => mole.addEventListener("click", bonk));
