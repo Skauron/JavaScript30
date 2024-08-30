@@ -1,15 +1,55 @@
-const speed = document.querySelector(".speed");
-const bar = speed.querySelector(".speed-bar");
-const video = document.querySelector(".flex");
+let countdown;
+const timerDisplay = document.querySelector(".display__time-left");
+const endTime = document.querySelector(".display__end-time");
+const buttons = document.querySelectorAll("[data-time]");
 
-speed.addEventListener("mousemove", function(e) {
-  const y = e.pageY - this.offsetTop;
-  const percent = y / this.offsetHeight;
-  const min = 0.4;
-  const max = 4;
-  const height = Math.round(percent * 100) + "%";
-  const playbackRate  = percent * (max - min) + min;
-  bar.style.height = height;
-  bar.textContent = playbackRate.toFixed(2) + "x";
-  video.playbackRate = playbackRate;
+function timer(seconds) {
+  clearInterval(countdown);
+
+  const now = Date.now();
+  const then = now + seconds * 1000;
+  displayTimeLeft(seconds);
+  displayEndTime(then);
+
+  countdown = setInterval(() => {
+    const secondsLeft = Math.round((then - Date.now()) / 1000);
+    if (secondsLeft < 0) {
+      clearInterval(countdown);
+      return;
+    }
+    displayTimeLeft(secondsLeft);
+  }, 1000);
+}
+
+function displayTimeLeft(seconds) {
+  const minutes = Math.floor(seconds / 60);
+  const remindersSecond = seconds % 60;
+  const display = `${minutes}:${
+    remindersSecond < 10 ? "0" : ""
+  }${remindersSecond}`;
+  document.title = display;
+  timerDisplay.textContent = display;
+}
+
+function displayEndTime(timestamp) {
+  const end = new Date(timestamp);
+  const hour = end.getHours();
+  const adjustedHour = hour > 12 ? hour - 12 : hour;
+  const minutes = end.getMinutes();
+  endTime.textContent = `Be Back At ${adjustedHour}:${
+    minutes < 10 ? "0" : ""
+  }${minutes}`;
+}
+
+function startTime() {
+  const seconds = parseInt(this.dataset.time);
+  timer(seconds);
+}
+
+buttons.forEach((button) => button.addEventListener("click", startTime));
+document.customForm.addEventListener("submit", function(e){
+  e.preventDefault();
+  const mins = this.minutes.value;
+  timer(mins * 60);
+  this.reset();  
 });
